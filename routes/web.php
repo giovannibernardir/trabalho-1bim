@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductItensController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Lista todos os produtos junto com seus itens (rota via classe de controller).
+Route::resource('products', ProductController::class);
+
+Route::resource('product-itens', ProductItensController::class)
+    ->parameters(['product-itens' => 'productItens']);
